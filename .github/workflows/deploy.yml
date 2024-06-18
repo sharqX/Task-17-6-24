@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Build Image
-        run: docker build -t thesharqx/nestjs-app .
+        run: sudo docker build -t thesharqx/nestjs-app .
 
       - name: Run App
-        run: docker run -d -p 80:3000 thesharqx/nestjs-app
+        run: sudo docker run -d -p 80:3000 thesharqx/nestjs-app
