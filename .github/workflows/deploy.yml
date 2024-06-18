@@ -3,7 +3,7 @@ name: NestJS CI
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -18,14 +18,8 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Clone Repo
-        run: git clone https://github.com/sharqX/Task-17-6-24.git
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build Image
-      - run: docker build -t thesharqx/nestjs-app .
-
-      - name: Navigate to directory
-        run: cd Task-17-6-24.git
-
-      - name: Run App
-        run: docker run -d -p 80:3000 thesharqx/nestjs-app
+      - name: Run build
+        run: npm run build
