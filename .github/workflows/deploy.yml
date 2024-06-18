@@ -16,13 +16,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '20'
 
-      - name: Download from GitHub
-        run: git clone https://github.com/ankithaphilip/pearthoughttask1.git
+      - name: Clone Repository
+        run: git clone https://github.com/sharqX/Task-17-6-24.git
 
       - name: Navigate to directory
-        run: cd pearthoughttask1
+        run: cd Task-17-6-24
 
       - name: Install dependencies
         run: npm install
