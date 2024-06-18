@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Change Directory
-        run: cd Task~17-6-24
+        run: cd Task-17-6-24
 
       - name: Install dependencies
         run: npm install
