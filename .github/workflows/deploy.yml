@@ -1,9 +1,9 @@
-name: NestJS CI
+name: Deploy to EC2
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -16,16 +16,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '16'
 
-      - name: Change Directory
-        run: cd && cd Task-17-6-24
+      - name: Download from GitHub
+        run: git clone https://github.com/ankithaphilip/pearthoughttask1.git
+
+      - name: Navigate to directory
+        run: cd pearthoughttask1
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Image
-        run: sudo docker build -t thesharqx/nestjs-app .
-
       - name: Run App
-        run: sudo docker run -d -p 80:3000 thesharqx/nestjs-app
+        run: npm run start
