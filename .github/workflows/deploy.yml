@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu
 
     steps:
       - name: Checkout code
@@ -21,11 +21,11 @@ jobs:
       - name: Download from GitHub
         run: git clone https://github.com/sharqX/Task-17-6-24.git
 
+      - name: Build Image
+      - run: docker build -t thesharqx/nestjs-app .
+
       - name: Navigate to directory
         run: cd Task-17-6-24.git
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm run start
+      - name: Run App
+        run: docker run -d -p 80:3000 thesharqx/nestjs-app
