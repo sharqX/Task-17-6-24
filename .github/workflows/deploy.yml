@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Download from GitHub
+      - name: Clone Repo
         run: git clone https://github.com/sharqX/Task-17-6-24.git
 
       - name: Build Image
