@@ -1,13 +1,13 @@
-name: Deploy to EC2
+name: NestJS
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -18,14 +18,20 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clone Repository
-        run: git clone https://github.com/sharqX/Task-17-6-24.git
-
-      - name: Navigate to directory
-        run: cd Task-17-6-24
-
       - name: Install dependencies
         run: npm install
 
-      - name: Run App
-        run: npm run start
+      - name: Run build
+        run: npm run build
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/Nestjs_App
+            git pull origin main
+            npm install
+            npm run build
