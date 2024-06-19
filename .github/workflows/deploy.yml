@@ -31,6 +31,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/Task-17-
+            cd /home/ubuntu/Task-17-6-24
             sudo docker build -t sharqx/nestjs-app .
             sudo docker run -d -p 80:3000 sharqx/nestjs-app
