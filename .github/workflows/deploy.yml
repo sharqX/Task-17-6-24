@@ -1,4 +1,4 @@
-name: NestJS
+name: Deploy to EC2
 
 on:
   push:
@@ -16,21 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
       - name: Run build
         run: npm run build
-
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOSTNAME }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
-          script: |
-            cd /home/ubuntu/Task-17-6-24
-            sudo docker build -t sharqx/nestjs-app .
-            sudo docker run -d -p 80:3000 sharqx/nestjs-app
