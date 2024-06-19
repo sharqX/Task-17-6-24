@@ -19,6 +19,6 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     
     - name: Build the Docker image
-      run: docker build -t thesharqx/nest .
+      run: docker build -t thesharqx/nest-app .
     - name: Push to Dockerhub
       run: docker push thesharqx/nest-app:latest
